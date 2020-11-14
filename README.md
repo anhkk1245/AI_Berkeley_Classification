@@ -5,7 +5,7 @@ Ta cần xác định score của từng label sau đó lấy ra từ mảng sco
 ### 3. MIRA
 Khi duyệt từng giá trị C trong Cgrid ta sẽ duyệt mảng trainingData giống câu 1 để điều chỉnh weight. Sau khi tìm được giá trị C tốt nhất, dựa vào giá trị C để xác định weight.
 ### 4. Digit Feature Design
-
+Duyệt mảng 2 chiều của DIGIT, nếu vị trí nào chưa được đánh dấu và datum.getPixel(x,y) = 0 thò ta sẽ đánh dấu và tăng biến đếm region. Sau đó có thể gán features[region] = 1.
 ### 5. Behavioral Cloning
 Dùng hàm classify để tìm ra action nhiều điểm nhất. Nếu giá trị dự đoán này chưa đúng thì điều chỉnh weight.
 ### 6. Pacman Feature Design
