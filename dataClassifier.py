@@ -143,8 +143,31 @@ def enhancedPacmanFeatures(state, action):
     For each state, this function is called with each legal action.
     It should return a counter with { <feature name> : <feature value>, ... }
     """
-    features = util.Counter()
+
     "*** YOUR CODE HERE ***"
+    state=state.generateSuccessor(0,action)
+    features = util.Counter()
+    foods=state.getFood().asList()
+    pac=state.getPacmanPosition()
+    minD=9999
+    for food in foods:
+        d=util.manhattanDistance(food,pac)
+        minD=min(d,minD)
+    if minD!=9999:
+        features["closest food"] = 1.0/minD
+    else:
+        features["closest food"] = 2
+
+    if features["closest food"]==0:
+        pdb.set_trace()
+
+
+    minD=10000000000
+    for ghost in state.getGhostPositions():
+        d=util.manhattanDistance(pac,ghost) 
+        minD=min(d,minD)
+
+    features["closest ghost"] = minD#1/pow(minD,2)
     return features
 
 def contestFeatureExtractorDigit(datum):
